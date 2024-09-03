@@ -9,4 +9,9 @@ describe Calculator do
     calculator = Calculator.new("")
     expect(calculator.add).to eq 0
   end
+  
+  it "should return the sum of comma separated numbers" do
+		calculator = Calculator.new("1,2,3")
+		expect(calculator.add).to eq 6
+	end
 end
