@@ -13,6 +13,7 @@ class Calculator
     negative_numbers = []
     nums = @numbers.split(delimiter).map do |str|
       num = str.to_i
+      num = 0 if num > 1000 # numbers greater than 1000 not allowed
       negative_numbers.push(num) if num < 0
       num  
     end
