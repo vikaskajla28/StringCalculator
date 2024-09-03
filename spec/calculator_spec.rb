@@ -40,7 +40,7 @@ describe Calculator do
 		expect(calculator.add).to eq 6
 	end
 	
-	it "should handle multiple delimters" do
+	it "should handle multiple delimiters" do
 		calculator = Calculator.new("[;][*]\n1*3*5;1")
 		expect(calculator.add).to eq 10
 	end

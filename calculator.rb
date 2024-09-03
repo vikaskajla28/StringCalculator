@@ -27,12 +27,24 @@ class Calculator
       delimiter = @numbers[2,1] 
       @numbers = @numbers.split("\n")[1] # get the string after the delimiter definition
     elsif @numbers[0] == "[" # custom delimiter defined inside brackets i.e [***]\n3***5***8
-      delimiter = @numbers[1, (@numbers.index("]") - 1)] # get delimiter inside brackets
+      delimiter = handle_multiple_delimiters
       @numbers = @numbers.split("\n")[1] # get string after delimiter definition
     else
       # default case
       @numbers.gsub!("\n", ",") #replace newline with comma if present
     end
     return delimiter
+  end
+  
+  def handle_multiple_delimiters
+    delimiter_string = @numbers.split("\n")[0]
+    default_delimiter = delimiter_string[1..(delimiter_string.index("]") - 1)] # get the first delimiter
+    delimiter_string.gsub!("[#{default_delimiter}]", "") # remove the delimiter
+    while delimiter_string.size > 0
+      current_delimiter = delimiter_string[1..(delimiter_string.index("]") - 1)]
+      @numbers.gsub!(current_delimiter, default_delimiter) # so that numbers contain only a single delimiter
+      delimiter_string.gsub!("[#{current_delimiter}]", "") # remove the current delimiter
+    end
+    return default_delimiter
   end
 end
