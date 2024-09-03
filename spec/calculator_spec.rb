@@ -29,4 +29,9 @@ describe Calculator do
 		calculator = Calculator.new("-1,-3,5,35,9")
 		expect{calculator.add}.to raise_error("negative numbers not allowed: -1,-3")
 	end
+	
+	it "should ignore any numbers greater than 1000" do
+		calculator = Calculator.new("1,40,3444,4")
+		expect(calculator.add).to eq 45
+	end
 end
