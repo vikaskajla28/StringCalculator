@@ -34,4 +34,9 @@ describe Calculator do
 		calculator = Calculator.new("1,40,3444,4")
 		expect(calculator.add).to eq 45
 	end
+	
+	it "should handle unlimited length delimiter" do
+		calculator = Calculator.new("[***]\n1***2***3")
+		expect(calculator.add).to eq 6
+	end
 end
