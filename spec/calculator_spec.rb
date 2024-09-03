@@ -39,4 +39,9 @@ describe Calculator do
 		calculator = Calculator.new("[***]\n1***2***3")
 		expect(calculator.add).to eq 6
 	end
+	
+	it "should handle multiple delimters" do
+		calculator = Calculator.new("[;][*]\n1*3*5;1")
+		expect(calculator.add).to eq 10
+	end
 end
