@@ -19,4 +19,9 @@ describe Calculator do
 		calculator = Calculator.new("1,2\n4")
 		expect(calculator.add).to eq 7
 	end
+	
+	it "should handle custom delimiter defined in the beginning using //" do
+		calculator = Calculator.new("//;\n2;6;9")
+		expect(calculator.add).to eq 17
+	end
 end
