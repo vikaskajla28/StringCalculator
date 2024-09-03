@@ -14,4 +14,9 @@ describe Calculator do
 		calculator = Calculator.new("1,2,3")
 		expect(calculator.add).to eq 6
 	end
+	
+	it "should handle the case when newline is present" do
+		calculator = Calculator.new("1,2\n4")
+		expect(calculator.add).to eq 7
+	end
 end
