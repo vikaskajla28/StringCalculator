@@ -24,4 +24,9 @@ describe Calculator do
 		calculator = Calculator.new("//;\n2;6;9")
 		expect(calculator.add).to eq 17
 	end
+	
+	it "should raise exception if negative numbers are present" do 
+		calculator = Calculator.new("-1,-3,5,35,9")
+		expect{calculator.add}.to raise_error("negative numbers not allowed: -1,-3")
+	end
 end
