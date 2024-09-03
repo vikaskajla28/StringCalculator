@@ -26,7 +26,11 @@ class Calculator
     if @numbers[0,2] == "//" # custom delimiter defined after //
       delimiter = @numbers[2,1] 
       @numbers = @numbers.split("\n")[1] # get the string after the delimiter definition
+    elsif @numbers[0] == "[" # custom delimiter defined inside brackets i.e [***]\n3***5***8
+      delimiter = @numbers[1, (@numbers.index("]") - 1)] # get delimiter inside brackets
+      @numbers = @numbers.split("\n")[1] # get string after delimiter definition
     else
+      # default case
       @numbers.gsub!("\n", ",") #replace newline with comma if present
     end
     return delimiter
